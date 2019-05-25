@@ -5,21 +5,7 @@
             <span class="label label-primary">Comment App</span>
          </div>
       </div>
-   </div><!--
-   <div class="row" style=" margin-top: 2%;">
-      <div class="col-md-12">
-         <div class="col-md-8">
-            <div class="form-group" style="margin-right: -37%;">
-               <input type="text" class="form-control" ng-model="comment" placeholder="Enter Comment" style="width: 75%;">
-            </div>
-         </div>
-         <div style=" margin-left: 2%;"  class="col-md-2">
-            <button type="submit" ng-click="addComment(comment)"class="btn btn-success"
-                    style="background-color: #54BB98;">Add Comment
-            </button>
-         </div>
-      </div>
-   </div>-->
+   </div>
 
    <div class="comment-form">
       <form class="form" name="form" ng-submit="form.$valid && addComment(comment)">
@@ -68,8 +54,8 @@
                   <a  ng-click="viewReplies(oneComment)">View Reply</a>
                </div>
             </div>
-            <div ng-if="replyComments[oneComment._id]"  ng-repeat="(key, replyComment) in replyComments">
-               <div ng-repeat="oneReplyComment in replyComment track by $index">
+            <div ng-if="replyComments && replyComments[oneComment._id] && currentReply=== oneComment._id"  ng-repeat="oneReplyComment in replyComments[oneComment._id]">
+               <div >
                   <div class="comment-box " style="background: #91ff0036 ">
                      <div class="comment-text">{{ oneReplyComment.comment }}</div>
                      <span class="comment-date">{{ oneReplyComment.createdDate | formatDate : 'MMMM Do YYYY, h:mm A'}}</span>

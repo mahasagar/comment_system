@@ -19,6 +19,8 @@ angular.module('HomePage', [])
         }
         getComment('PARENT');
 
+
+
         $scope.addComment = function(comment,parentComment){
             console.log('comment : '+JSON.stringify(comment));
             var oneComment = {
@@ -32,6 +34,7 @@ angular.module('HomePage', [])
                  console.log('result:  '+JSON.stringify(result));
                   $scope.message = result;
                   getComment('PARENT');
+                  $scope.comment=null;
                    $scope.replyView = null;
             });
         }
@@ -40,13 +43,21 @@ angular.module('HomePage', [])
                 commentId : comment._id
             };
         }
+
+
+
+
         $scope.replyComments = {};
+        $scope.currentReply=null;
         $scope.viewReplies = function(comment){
+             $scope.currentReply=null;
              var query = {
                 parentCommentId : comment._id
              };
+             $scope.replyComments = {};
              Main.getComments(query,function (err,result) {
                   console.log('result:  '+JSON.stringify(result));
+                  $scope.currentReply = comment._id;
                   $scope.replyComments[comment._id.toString()] = result;
              });
         }
