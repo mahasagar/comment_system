@@ -1,0 +1,34 @@
+<div class="container">
+   <div class="row">
+      <div class="col md-12">
+         <div class="col md-12" style="margin-left: 42%; margin-top: 13px; font-size: 29px;">
+            <span class="label label-primary">Comment App</span>
+         </div>
+      </div>
+   </div>
+   <div class="row" style=" margin-top: 2%;">
+      <div class="col-md-12">
+         <div class="col-md-8">
+            <div class="form-group" style="margin-right: -37%;">
+               <input type="text" class="form-control" ng-model="comment" placeholder="Enter Comment" style="width: 75%;">
+            </div>
+         </div>
+         <div style=" margin-left: 2%;"  class="col-md-2">
+            <button type="submit" ng-click="addComment(comment)"class="btn btn-success"
+                    style="background-color: #54BB98;">Add Comment
+            </button>
+         </div>
+      </div>
+   </div>
+   <div >
+      <div class="card" style="background: beige;" ng-repeat="oneComment in comments track by $index">
+         <div class="card-body">
+            <h5 class="card-title">{{oneComment.user[0] ? oneComment.user[0].name : 'Thanos'}}</h5>
+            <p class="card-text">{{ oneComment.comment}}</p>
+            <p class="card-text">{{ oneComment.createdDate | formatDate : 'MMMM Do YYYY, h:mm A'}}</p>
+            <a href="#" class="btn btn-primary">View Reply</a>
+         </div>
+      </div>
+   </div>
+
+</div>

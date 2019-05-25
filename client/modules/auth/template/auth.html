@@ -1,0 +1,64 @@
+<div class="container" style="padding-top: 5%">
+   <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" style="padding-top: 6%">
+       <div class="col-md-6 col-md-offset-3">
+           <div class="panel panel-login" ng-if="featureName == 'LOGIN'">
+               <div class="panel-heading">
+                   <div class="row">
+                       <div class="col-xs-6">
+                           <a href="#" class="active" ng-click="featureName='SIGN_UP'" id="login-form-link">Sign In</a>
+                       </div>
+                       <div class="col-xs-6">
+                           <a  ng-click="featureName='LOGIN'"id="register-form-link">Sign Up</a>
+                       </div>
+                   </div>
+                   <hr>
+               </div>
+               <div class="panel-body">
+                   <div class="row">
+                       <div class="col-lg-12">
+                           <form  id="login-form" name="login" method="post" role="form" style="display: block;" ng-submit="loginFunction(login)">
+                               <div class="form-group">
+                                   <input type="email" name="loginEmail" id="loginEmail" tabindex="1" class="form-control" placeholder="Email" ng-model="login.email" value="" required>
+                                   <div ng-show="login.loginEmail.$error.email" class="text-danger">Invalid
+                                       email address.
+                                   </div>
+                               </div>
+                               <div class="form-group">
+                                   <input type="password" name="password" id="loginPassword" tabindex="2" class="form-control" ng-model="login.password" placeholder="******" required>
+                               </div>
+                               <div class="form-group">
+                                   <div class="row">
+                                       <div class="col-sm-6">
+                                           <input type="submit"  name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+                                       </div>
+                                   </div>
+                               </div>
+                           </form>
+                           <form name="register" id="register-form"  method="post" role="form" style="display: none;" ng-submit="registerFunction(user)">
+                               <div class="form-group">
+                                   <input type="text" name="name" id="user_name" tabindex="1" class="form-control" ng-model="user.name" placeholder="Name" value="" required>
+                               </div>
+                               <div class="form-group">
+                                   <input type="email" name="username" id="username" tabindex="1" class="form-control" ng-model="user.username" placeholder="Email Address" value="" required>
+                                   <div ng-show="register.username.$error.username" class="text-danger">Invalid
+                                       email address.
+                                   </div>
+                               </div>
+                               <div class="form-group">
+                                   <input type="password" name="password" id="password" tabindex="2" class="form-control" ng-model="user.password" placeholder="Password" required>
+                               </div>
+                               <div class="form-group">
+                                   <div class="row">
+                                       <div class="col-sm-6 col-sm-offset-3">
+                                           <input  type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                       </div>
+                                   </div>
+                               </div>
+                           </form>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>

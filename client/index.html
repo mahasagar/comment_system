@@ -1,0 +1,40 @@
+<html ng-app='commentoApp'>
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="sagar chaudhari" />
+    <title>Commento App</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="../lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../lib/angular/angular.min.js"></script>
+    <script src="../lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="../lib/moment/min/moment.min.js"></script>
+
+    <script src="./index.js"></script>
+    <script src="./app.js"></script>
+
+    <script src="../modules/common/commonServices.js"></script>
+
+    <script src="../modules/main/index.js"></script>
+    <script src="../modules/main/services/mainService.js"></script>
+    <script src="../modules/main/js/mainController.js"></script>
+<!--
+    <script src="../modules/auth/index.js"></script>
+    <script src="../modules/auth/services/authService.js"></script>
+    <script src="../modules/auth/js/authCtrl.js"></script>-->
+
+</head>
+<body class="container" ng-controller="appCtrl">
+
+ <!--<div class="center" >-->
+     <!--Welcome to Comment App-->
+ <!--</div>-->
+
+ <div style="position: relative;" ui-view></div>
+</body>
+</html>
