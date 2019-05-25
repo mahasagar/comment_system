@@ -28,7 +28,7 @@ function getComment(req,res){
         findQuery.parentCommentId = { $exists : false};
     }
     if(reqParam.parentCommentId){
-        findQuery.parent.commentId = ObjectId(reqParam.parentCommentId);
+        findQuery.parentCommentId = ObjectId(reqParam.parentCommentId);
     }
 
     var pageNo = reqParam.page ?  parseInt(reqParam.page) : 1;

@@ -5,7 +5,7 @@
             <span class="label label-primary">Comment App</span>
          </div>
       </div>
-   </div>
+   </div><!--
    <div class="row" style=" margin-top: 2%;">
       <div class="col-md-12">
          <div class="col-md-8">
@@ -19,16 +19,64 @@
             </button>
          </div>
       </div>
+   </div>-->
+
+   <div class="comment-form">
+      <form class="form" name="form" ng-submit="form.$valid && addComment(comment)">
+         <div class="form-row">
+        <textarea
+                class="input"
+                ng-model="comment"
+                placeholder="Add comment..."
+                required></textarea>
+         </div>
+
+         <div class="form-row">
+            <input type="submit" value="Add Comment">
+         </div>
+      </form>
    </div>
-   <div >
-      <div class="card" style="background: beige;" ng-repeat="oneComment in comments track by $index">
-         <div class="card-body">
-            <h5 class="card-title">{{oneComment.user[0] ? oneComment.user[0].name : 'Thanos'}}</h5>
-            <p class="card-text">{{ oneComment.comment}}</p>
-            <p class="card-text">{{ oneComment.createdDate | formatDate : 'MMMM Do YYYY, h:mm A'}}</p>
-            <a href="#" class="btn btn-primary">View Reply</a>
+
+   <div class="comments">
+      <!-- Comment -->
+      <div class="comment" ng-repeat="oneComment in comments | orderBy: '-date'">
+         <!-- Comment Box -->
+         <div class="comment-box">
+            <div class="comment-text">{{ oneComment.comment }}</div>
+            <div class="comment-footer">
+               <div class="comment-info">
+               <span class="comment-author">
+                 <em ng-if="!oneComment.user[0]">Anonymous</em>
+                 <a ng-if="oneComment.user[0]" >{{ {{oneComment.user[0] ? oneComment.user[0].name : 'Thanos'}} }}</a>
+               </span>
+               <span class="comment-date">{{ oneComment.createdDate | formatDate : 'MMMM Do YYYY, h:mm A'}}</span>
+               </div>
+               <div class="col-md-8" ng-if="replyView.commentId === oneComment._id">
+                  <div class="col-md-6">
+                     <div class="form-group" style="margin-right: -37%;">
+                        <input type="text" class="form-control" ng-model="reply_comment" placeholder="Enter Comment" style="width: 75%;">
+                     </div>
+                  </div>
+                  <div style=" margin-left: 2%;"  class="col-md-2">
+                     <button type="submit" ng-click="addComment(reply_comment,oneComment)"class="btn btn-success"
+                             style="background-color: #54BB98;">Add Comment
+                     </button>
+                  </div>
+               </div>
+               <div class="comment-actions">
+                  <a ng-click="addReplyView(oneComment)">Reply</a>
+                  <a  ng-click="viewReplies(oneComment)">View Reply</a>
+               </div>
+            </div>
+            <div ng-if="replyComments[oneComment._id]"  ng-repeat="(key, replyComment) in replyComments">
+               <div ng-repeat="oneReplyComment in replyComment track by $index">
+                  <div class="comment-box " style="background: #91ff0036 ">
+                     <div class="comment-text">{{ oneReplyComment.comment }}</div>
+                     <span class="comment-date">{{ oneReplyComment.createdDate | formatDate : 'MMMM Do YYYY, h:mm A'}}</span>
+                  </div>
+               </div>
+            </div>
          </div>
       </div>
    </div>
-
 </div>
