@@ -12,7 +12,6 @@
 ### How to Deploy
     $ pm2 start server.js  #Production
 
-
 ### Tech Stack
     - Angularjs : 1.6.5
     - Nodejs : 8.9.0
